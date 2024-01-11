@@ -5,18 +5,19 @@ import datetime        # Used for working with dates and times
 import wikipedia       # Used for accessing Wikipedia articles
 import pyjokes         # Used for generating jokes
 
-listener = sr.Recognizer()
-engine = pyttsx3.init()
-voices = engine.getProperty("voices")
-engine.setProperty("voice", voices[1].id)
+listener = sr.Recognizer()             # Used for speech recognition 
+engine = pyttsx3.init()                # Used for text-to-speech synthesis
+voices = engine.getProperty("voices")  # Get available voices for text-to-speech
+engine.setProperty("voice", voices[1].id)   # Set the voice for text-to-speech
 
-engine.setProperty("rate", 125)  #  adjusting rate of alexa
 
-def talk(text):
-    engine.say(text)
+engine.setProperty("rate", 125)  #  adjusting rate of alexa...
+
+def talk(text):    
+    engine.say(text)        #    Utilizes the text-to-speech engine to audibly communicate the provided text.
     engine.runAndWait()
 
-def alexa_command():
+def alexa_command():    #    """Listens, recognizes, and returns processed voice command, excluding the trigger phrase "hey alexa"."""
     try:
         with sr.Microphone() as source:
             print("Listening...")
@@ -30,7 +31,7 @@ def alexa_command():
         pass
     return command
 
-def run_alexa():
+def run_alexa():   #This define function tells at what inputs alexa should give respective outputs
     while True:
         command = alexa_command()
         print(command)
