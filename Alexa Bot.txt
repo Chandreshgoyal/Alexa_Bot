@@ -1,0 +1,58 @@
+import speech_recognition as sr
+import pyttsx3
+import pywhatkit
+import datetime
+import wikipedia
+import pyjokes
+
+listener = sr.Recognizer()
+engine = pyttsx3.init()
+voices = engine.getProperty("voices")
+engine.setProperty("voice", voices[1].id)
+
+engine.setProperty("rate", 125)  # # adjusting rate of alexa
+
+def talk(text):
+    engine.say(text)
+    engine.runAndWait()
+
+def alexa_command():
+    try:
+        with sr.Microphone() as source:
+            print("Listening...")
+            voice = listener.listen(source)
+            command = listener.recognize_google(voice)
+            command = command.lower()
+            if "hey alexa" in command:
+                command = command.replace("hey alexa", "")
+                print(command)
+    except:
+        pass
+    return command
+
+def run_alexa():
+    while True:
+        command = alexa_command()
+        print(command)
+        if "alexa stop" in command:
+            talk("Goodbye!")
+            break
+        elif "youtube" in command:
+            song = command.replace("youtube", "")
+            talk("Playing " + song)
+            pywhatkit.playonyt(song)
+        elif "time" in command:
+            time = datetime.datetime.now().strftime("%H:%M")
+            print(time)
+            talk("Current time is " + time)
+        elif "who" in command:
+            # Extract the person's name after "who"
+            person = command.split("who", 1)[1].strip()
+            info = wikipedia.summary(person, 2)
+            print(info)
+            talk(info)
+        elif "joke" in command:
+            talk(pyjokes.get_joke())
+
+if __name__ == "__main__":
+    run_alexa()
