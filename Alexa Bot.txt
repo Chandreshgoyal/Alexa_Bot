@@ -11,13 +11,13 @@ voices = engine.getProperty("voices")  # Get available voices for text-to-speech
 engine.setProperty("voice", voices[1].id)   # Set the voice for text-to-speech
 
 
-engine.setProperty("rate", 125)  #  adjusting rate of alexa...
+engine.setProperty("rate", 125)  # adjusting rate of alexa...
 
 def talk(text):    
-    engine.say(text)        #    Utilizes the text-to-speech engine to audibly communicate the provided text.
+    engine.say(text)        #  Utilizes the text-to-speech engine to audibly communicate the provided text.
     engine.runAndWait()
 
-def alexa_command():    #    """Listens, recognizes, and returns processed voice command, excluding the trigger phrase "hey alexa"."""
+def alexa_command():    #  Listens, recognizes, and returns processed voice command, excluding the trigger phrase "hey alexa
     try:
         with sr.Microphone() as source:
             print("Listening...")
@@ -31,7 +31,7 @@ def alexa_command():    #    """Listens, recognizes, and returns processed voice
         pass
     return command
 
-def run_alexa():   #This define function tells at what inputs alexa should give respective outputs
+def run_alexa():   # This define function tells at what inputs alexa should give respective outputs
     while True:
         command = alexa_command()
         print(command)
