@@ -1,16 +1,16 @@
-import speech_recognition as sr
-import pyttsx3
-import pywhatkit
-import datetime
-import wikipedia
-import pyjokes
+import speech_recognition as sr     # Used for converting speech to text
+import pyttsx3         # Used for text-to-speech conversion
+import pywhatkit       # Here use for playing songs from youtube
+import datetime        # Used for working with dates and times
+import wikipedia       # Used for accessing Wikipedia articles
+import pyjokes         # Used for generating jokes
 
 listener = sr.Recognizer()
 engine = pyttsx3.init()
 voices = engine.getProperty("voices")
 engine.setProperty("voice", voices[1].id)
 
-engine.setProperty("rate", 125)  # # adjusting rate of alexa
+engine.setProperty("rate", 125)  #  adjusting rate of alexa
 
 def talk(text):
     engine.say(text)
