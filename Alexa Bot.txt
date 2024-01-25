@@ -1,23 +1,24 @@
-import speech_recognition as sr     # Used for converting speech to text
-import pyttsx3         # Used for text-to-speech conversion
-import pywhatkit       # Here use for playing songs from youtube
-import datetime        # Used for working with dates and times
-import wikipedia       # Used for accessing Wikipedia articles
-import pyjokes         # Used for generating jokes
+#Main code
+import speech_recognition as sr    # Used for converting speech to text
+import pyttsx3                     # Used for text-to-speech conversion
+import pywhatkit                   # Here use for playing songs from youtube
+import datetime                    # Used for working with dates and times
+import wikipedia                   # Used for accessing Wikipedia articles
+import pyjokes                     # Used for generating jokes
 
-listener = sr.Recognizer()             # Used for speech recognition 
-engine = pyttsx3.init()                # Used for text-to-speech synthesis
-voices = engine.getProperty("voices")  # Get available voices for text-to-speech
+
+listener = sr.Recognizer()         # Used for speech recognition 
+engine = pyttsx3.init()            # Used for text-to-speech synthesis
+voices = engine.getProperty("voices")   # Get available voices for text-to-speech
 engine.setProperty("voice", voices[1].id)   # Set the voice for text-to-speech
+engine.setProperty("rate", 150)             # adjusting rate of alexa...
 
-
-engine.setProperty("rate", 125)  # adjusting rate of alexa...
-
-def talk(text):    
-    engine.say(text)        #  Utilizes the text-to-speech engine to audibly communicate the provided text.
+def talk(text):
+    engine.say(text)             #  Utilizes the text-to-speech engine to audibly communicate the provided text.
     engine.runAndWait()
 
 def alexa_command():    #  Listens, recognizes, and returns processed voice command, excluding the trigger phrase "hey alexa
+    command = ""  # Initialize command with an empty string
     try:
         with sr.Microphone() as source:
             print("Listening...")
@@ -31,7 +32,7 @@ def alexa_command():    #  Listens, recognizes, and returns processed voice comm
         pass
     return command
 
-def run_alexa():   # This define function tells at what inputs alexa should give respective outputs
+def run_alexa():    # This define function tells at what inputs alexa should give respective outputs
     while True:
         command = alexa_command()
         print(command)
@@ -46,9 +47,8 @@ def run_alexa():   # This define function tells at what inputs alexa should give
             time = datetime.datetime.now().strftime("%H:%M")
             print(time)
             talk("Current time is " + time)
-        elif "who" in command:
-            # Extract the person's name after "who"
-            person = command.split("who", 1)[1].strip()
+        elif "who is" in command:
+            person = command.replace("who is", "").strip()
             info = wikipedia.summary(person, 2)
             print(info)
             talk(info)
@@ -57,3 +57,4 @@ def run_alexa():   # This define function tells at what inputs alexa should give
 
 if __name__ == "__main__":
     run_alexa()
+
