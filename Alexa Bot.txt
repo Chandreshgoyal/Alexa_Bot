@@ -3,7 +3,7 @@ import speech_recognition as sr    # Used for converting speech to text
 import pyttsx3                     # Used for text-to-speech conversion
 import pywhatkit                   # Here use for playing songs from youtube
 import datetime                    # Used for working with dates and times
-import wikipedia                   # Used for accessing Wikipedia articles
+import wikipedia                   # Used for accessing Wikipedia articles      #may be wikipedia lib will not work as when i am doing it the wikipedia site was down... please check it
 import pyjokes                     # Used for generating jokes
 
 
