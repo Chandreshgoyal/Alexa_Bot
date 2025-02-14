@@ -1,0 +1,71 @@
+Git Information And useful Commands
+
+1- A version control system, or VCS, tracks the history of changes as people and teams collaborate on projects together. As developers make changes to the project, any earlier version of the project can be recovered at any time.
+
+2- Git lets developers see the entire timeline of their changes, decisions, and progression of any project in one place.
+
+3- With a DVCS like Git, collaboration can happen any time while maintaining source code integrity. Using branches, developers can safely propose changes to production code.
+
+4-  A repository, or Git project, encompasses the entire collection of files and folders associated with a project, along with each file's revision history. The file history appears as snapshots in time called commits. The commits can be organized into multiple lines of development called branches
+
+5- Git is a DVCS, repositories are self-contained units and anyone who has a copy of the repository can access the entire codebase and its history
+
+6- Git repository also allows for: interaction with the history, cloning the repository, creating branches, committing, merging, comparing changes across versions of code, and more.
+
+
+7- Commands
+
+1️⃣ -  Configuration & Initialization
+git config --global user.name "Your Name" – Set global username. ok
+git config --global user.email "youremail@example.com" – Set global email. ok
+git init – Initialize a new Git repository. ok
+git init <directory> – Initialize a Git repository in a specific directory. ok
+
+
+2️⃣ Repository & Remote Management
+git clone <repo-url> – Clone a remote repository locally. ok
+git remote -v – View remote repository details. ok
+git remote add <name> <URL> – Add a new remote repository. ok     oviously needed for pull and push without its remote connection not possible
+git fetch <remote_repo> <branch> – Fetch a branch from a remote repository.
+git pull <remote_repo> – Fetch and merge changes from a remote repository.
+git push origin <branch> – Push a branch to a remote repository.
+git push origin --delete <branch> – Delete a remote branch.
+git fork ------------------- ok
+
+
+3️⃣ Tracking & Staging Changes
+git status – Check the status of the repository. ok
+git add <file> / git add . – Add files to the staging area.ok
+git commit -m "message" – Commit staged changes with a message.ok
+git log – View commit history.ok
+
+
+4️⃣ Branching & Merging
+git branch – List all branches.  ok
+git branch -a – List all local and remote branches. ok
+git branch <branch-name> – Create a new branch. ok
+git branch -d <branch-name> – Delete a branch.    note  jis branch pr hai wo delete nhi hogi if want then switch to another   ok
+git checkout -b <branch-name> – Create and switch to a new branch.  ok
+git checkout <branch-name> – Switch to an existing branch.  ok
+git merge <branch-name> – Merge a branch into the current branch. ok
+git merge <source-branch> <target-branch> – Merge one branch into another. same ok
+
+
+5️⃣ Undoing Changes & Resetting
+git reset <commit> – Undo all changes after a specific commit.
+git reset --soft <commit> – Move branch pointer to a commit, keeping changes staged.
+git reset --hard <commit> – Move branch pointer to a commit, discarding all changes.
+git revert <commit> – Create a new commit that undoes the changes of a specific commit.
+git restore <file> – Restore a file to the last committed state.
+
+
+6️⃣ Stashing Changes
+git stash – Temporarily save uncommitted changes.
+git stash pop – Restore stashed changes. in background
+git stash clear
+rm -r <dir name> ok
+   
+
+7️⃣ Tagging & Version Control
+git tag <tag-name> – Create a lightweight tag at the current commit.
+git tag -a <tag-name> -m "message" – Create an annotated tag with a message.
