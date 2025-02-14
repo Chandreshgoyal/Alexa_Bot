@@ -24,13 +24,13 @@ git init <directory> – Initialize a Git repository in a specific directory. ok
 
 2️⃣ Repository & Remote Management
 git clone <repo-url> – Clone a remote repository locally. ok
-git remote -v – View remote repository details. ok
-git remote add <name> <URL> – Add a new remote repository. ok     oviously needed for pull and push without its remote connection not possible
-git fetch <remote_repo> <branch> – Fetch a branch from a remote repository.
+git remote -v – View remote repository details. ok  ( jis repo ko clone kiya h usi ka remote connection)
+git remote add <name> <URL> – Add a new remote repository. ok     obviously needed for pull and push without its remote connection not possible
+git fetch <remote_repo> <branch> – Fetch a branch from a remote repository.   git rebase <name of original/fork url > / branch name
 git pull <remote_repo> – Fetch and merge changes from a remote repository.
 git push origin <branch> – Push a branch to a remote repository.
 git push origin --delete <branch> – Delete a remote branch.
-git fork ------------------- ok
+git fork ------------------- ok {always pull the fork repo so that no issue will come and push also in fork}
 
 
 3️⃣ Tracking & Staging Changes
@@ -52,17 +52,17 @@ git merge <source-branch> <target-branch> – Merge one branch into another. sam
 
 
 5️⃣ Undoing Changes & Resetting
-git reset <commit> – Undo all changes after a specific commit.
-git reset --soft <commit> – Move branch pointer to a commit, keeping changes staged.
-git reset --hard <commit> – Move branch pointer to a commit, discarding all changes.
+git reset <commit> – Undo all changes after a specific commit.  ok
+git reset --soft <commit> – Move branch pointer to a commit, keeping changes staged.  (isme commit will cancel but changes will show )  ok
+git reset --hard <commit> – Move branch pointer to a commit, discarding all changes.   (changes + commit will cancel)  ok
 git revert <commit> – Create a new commit that undoes the changes of a specific commit.
 git restore <file> – Restore a file to the last committed state.
 
 
 6️⃣ Stashing Changes
-git stash – Temporarily save uncommitted changes.
-git stash pop – Restore stashed changes. in background
-git stash clear
+git stash – Temporarily save only for uncommitted changes. by this using all changes will cancel   ok
+git stash pop – Restore stashed changes. in background  ok
+git stash clear  ok
 rm -r <dir name> ok
    
 
